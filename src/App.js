@@ -1,6 +1,7 @@
 import React from 'react';
-import { Switch, Route, Link } from "react-router-dom";
-import { Navbar } from "./components"
+import { Routes, Route, Link } from "react-router-dom";
+import { Navbar, Homepage } from "./components"
+
 
 function App() {
     return (
@@ -10,11 +11,11 @@ function App() {
             </div>
             <div className="main">
                 <div className="routes">
-                    <Switch>
-                        <Route exact path="/">
-                            <Homepage />
-                        </Route>
-                    </Switch>
+                    <Routes>
+                        <Route exact path="/" element={<Homepage />} />
+
+
+                    </Routes>
                 </div>
             </div>
             <div className="footer">
