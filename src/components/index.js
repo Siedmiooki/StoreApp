@@ -1,2 +1,5 @@
 export { default as Navbar } from "./Navbar"
 export { default as Homepage } from "./Homepage"
+export { default as WomensPage } from "./WomensPage"
+export { default as MensPage } from "./MensPage"
+export { default as KidsPage } from "./KidsPage"
