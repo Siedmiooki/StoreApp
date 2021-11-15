@@ -16,7 +16,7 @@ function Navbar() {
             <StyledLinks>
                 <Link to="womens">.WOMENS</Link>
                 <Link to="mens">.MENS</Link>
-                <Link to="kids">.KIDS</Link>
+                <Link to="outlet">.OUTLET</Link>
             </StyledLinks>
         </StyledNavbar>
     )

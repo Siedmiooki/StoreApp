@@ -3,16 +3,15 @@ import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage } from "."
 
-function WomensPage() {
+function OutletPage() {
 
-    const { data, isFetching } = useGetListQuery(27108);
+    const { data, isFetching } = useGetListQuery(27391);
     if (isFetching) return "Loading..."
     const item = data.products
 
-
     return (
-        <StyledWomens>
-            <HeroPage id="1" />
+        <StyledOutlet>
+            <HeroPage id="0" />
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
@@ -23,11 +22,11 @@ function WomensPage() {
                 ))}
 
             </StyledCardContainer>
-        </StyledWomens>
+        </StyledOutlet>
     )
 }
 
-const StyledWomens = styled.div`
+const StyledOutlet = styled.div`
 height: 100vh;
 width: 100%;
 display: flex;
@@ -69,4 +68,4 @@ grid-row-gap: 5rem;
 background: white;
 `
 
-export default WomensPage
+export default OutletPage

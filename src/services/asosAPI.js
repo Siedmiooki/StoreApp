@@ -16,7 +16,7 @@ export const asosApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getList: builder.query({
-            query: () => createRequest("/products/v2/list?categoryId=6992")
+            query: (id) => createRequest(`/products/v2/list?categoryId=${id}`)
         })
     })
 })

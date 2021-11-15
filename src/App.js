@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from "./components/Globalstyles";
-import { Routes, Route, Link } from "react-router-dom";
-import { Navbar, Homepage, WomensPage, MensPage, KidsPage } from "./components"
+import { Routes, Route } from "react-router-dom";
+import { Navbar, Homepage, WomensPage, MensPage, OutletPage } from "./components"
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
                         <Route exact path="/" element={<Homepage />} />
                         <Route exact path="/womens" element={<WomensPage />} />
                         <Route exact path="/mens" element={<MensPage />} />
-                        <Route exact path="/kids" element={<KidsPage />} />
+                        <Route exact path="/outlet" element={<OutletPage />} />
                     </Routes>
                 </div>
             </div>

@@ -6,7 +6,8 @@ import { MainPage, HeroPage } from "./"
 
 function Homepage() {
 
-    const { data, isFetching } = useGetListQuery();
+    const { data, isFetching } = useGetListQuery(27108);
+    // 6992
     // console.log(data)
 
     if (isFetching) return "Loading..."
