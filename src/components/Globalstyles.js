@@ -18,5 +18,20 @@ html {
         background-color: white
     }
 }
+button {
+    background-color: white;
+    color: black;
+    font-family: 'Jost';
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border: none;
+    padding: 1rem 2rem;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: #f75e53;
+        color: white;
+    }
+}
 `
 export default GlobalStyles

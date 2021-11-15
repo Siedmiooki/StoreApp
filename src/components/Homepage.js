@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
-import { useGetListQuery } from "../services/kohlsAPI"
+import { useGetListQuery } from "../services/asosAPI"
+import { MainPage, HeroPage } from "./"
 
 function Homepage() {
 
-    // const { data, isFetching } = useGetListQuery();
+    const { data, isFetching } = useGetListQuery();
     // console.log(data)
 
-
+    if (isFetching) return "Loading..."
     return (
-        <div>
-            <h1>Homepage</h1>
-        </div>
+        <StyledHomepage>
+            <HeroPage id="0" />
+            <MainPage data={data} />
+        </StyledHomepage>
     )
 }
 
+const StyledHomepage = styled.div`
+height: 100vh;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
 
+`
 
 export default Homepage

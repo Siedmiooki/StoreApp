@@ -3,14 +3,38 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
 
+function Navbar() {
+    return (
+        <StyledNavbar>
+            <StyledLogo>
+                <Link to="/">
+                    <h1>:OK$A</h1>
+                    <p>Trend</p>
+                    <p>Store</p>
+                </Link>
+            </StyledLogo>
+            <StyledLinks>
+                <Link to="womens">.WOMENS</Link>
+                <Link to="mens">.MENS</Link>
+                <Link to="kids">.KIDS</Link>
+            </StyledLinks>
+        </StyledNavbar>
+    )
+}
 
 const StyledNavbar = styled.div`
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10; */
     height: 10vh;
+    width: 100%;
     background: white;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
     justify-content: space-between;
-    box-shadow: 0 8px 8px 0px lightgray;
+    box-shadow: 0 2px 12px 0px lightgray;
     a {
         color: black;
         text-decoration: none;
@@ -24,6 +48,7 @@ const StyledNavbar = styled.div`
 const StyledLogo = styled.div`
 display: flex;
 width: 40%;
+margin-left: 3rem;
 h1 {
     letter-spacing: 5px;
 }
@@ -46,25 +71,5 @@ a {
     letter-spacing: 2px;
 }
 `
-
-
-function Navbar() {
-    return (
-        <StyledNavbar>
-            <StyledLogo>
-                <Link to="/">
-                    <h1>OK$A</h1>
-                    <p>Trend</p>
-                    <p>Store.</p>
-                </Link>
-            </StyledLogo>
-            <StyledLinks>
-                <Link to="womens">.WOMENS</Link>
-                <Link to="mens">.MENS</Link>
-                <Link to="kids">.KIDS</Link>
-            </StyledLinks>
-        </StyledNavbar>
-    )
-}
 
 export default Navbar

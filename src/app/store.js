@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { kohlsApi } from "../services/kohlsAPI"
+import { asosApi } from "../services/asosAPI"
 
 export default configureStore({
     reducer: {
-        [kohlsApi.reducerPath]: kohlsApi.reducer,
+        [asosApi.reducerPath]: asosApi.reducer,
     },
 });
