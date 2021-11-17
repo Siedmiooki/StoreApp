@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage } from "."
+import { Link } from 'react-router-dom'
 
 function OutletPage() {
 
@@ -15,7 +16,9 @@ function OutletPage() {
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
+                        <Link to={`/${item.id}`} key={item.id}>
                         <img src={`https://${item.imageUrl}`} alt={item.name} />
+                        </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                     </StyledItemCard>

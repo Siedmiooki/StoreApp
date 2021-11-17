@@ -8,7 +8,7 @@ function Navbar() {
         <StyledNavbar>
             <StyledLogo>
                 <Link to="/">
-                    <h1>:OK$A</h1>
+                    <h1>.OK$A</h1>
                     <p>Trend</p>
                     <p>Store</p>
                 </Link>
