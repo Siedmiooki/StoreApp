@@ -26,6 +26,7 @@ justify-content: flex-end;
 position: relative;
 cursor: pointer;
 margin-bottom: 2rem;
+margin-top: 10rem;
 `
 const StyledImg = styled.img`
     width: 100%;

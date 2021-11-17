@@ -17,10 +17,14 @@ export const asosApi = createApi({
     endpoints: (builder) => ({
         getList: builder.query({
             query: (id) => createRequest(`/products/v2/list?categoryId=${id}`)
-        })
+        }),
+        getDetails: builder.query({
+            query: (id) => createRequest(`/products/v3/detail?id=${id}`)
+        }),
     })
 })
 
 export const {
     useGetListQuery,
+    useGetDetailsQuery
 } = asosApi

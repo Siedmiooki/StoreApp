@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
 import { useGetListQuery } from "../services/asosAPI"
@@ -7,8 +7,6 @@ import { MainPage, HeroPage } from "./"
 function Homepage() {
 
     const { data, isFetching } = useGetListQuery(27108);
-    // 6992
-    // console.log(data)
 
     if (isFetching) return "Loading..."
     return (

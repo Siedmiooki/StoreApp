@@ -14,8 +14,8 @@ function Navbar() {
                 </Link>
             </StyledLogo>
             <StyledLinks>
-                <Link to="womens">.WOMENS</Link>
-                <Link to="mens">.MENS</Link>
+                <Link to="women">.WOMEN</Link>
+                <Link to="men">.MEN</Link>
                 <Link to="outlet">.OUTLET</Link>
             </StyledLinks>
         </StyledNavbar>
@@ -23,10 +23,10 @@ function Navbar() {
 }
 
 const StyledNavbar = styled.div`
-    /* position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 10; */
+    z-index: 10;
     height: 10vh;
     width: 100%;
     background: white;
@@ -61,7 +61,7 @@ a {
 }
 `
 const StyledLinks = styled.nav`
-width: 40%;
+width: 30%;
 display: flex;
 justify-content: space-around;
 a {

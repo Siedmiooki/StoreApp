@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage } from "."
+import { Link } from 'react-router-dom'
 
 function MensPage() {
 
@@ -15,10 +16,13 @@ function MensPage() {
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
+                        <Link to={`/${item.id}`} key={item.id}>
                         <img src={`https://${item.imageUrl}`} alt={item.name} />
+                        </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                     </StyledItemCard>
+
                 ))}
 
             </StyledCardContainer>
@@ -50,9 +54,7 @@ background: white;
         text-align: left;
     }
     @media ( max-width: 1300px ) {
-        padding: 0rem;
-        border-radius: 1.5rem;
-        margin-bottom: 1rem
+
     }
 `
 
