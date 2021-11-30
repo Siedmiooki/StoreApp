@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
-import { HeroPage } from "."
+import { HeroPage, Spinner } from "."
 import { Link } from 'react-router-dom'
+import GoToTop from './GoToTop'
+
 
 function OutletPage() {
 
     const { data, isFetching } = useGetListQuery(27391);
-    if (isFetching) return "Loading..."
+    if (isFetching) return <Spinner />
     const item = data.products
 
     return (
         <StyledOutlet>
-            <HeroPage id="0" />
+            <HeroPage id={0} />
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
@@ -25,6 +27,7 @@ function OutletPage() {
                 ))}
 
             </StyledCardContainer>
+            <GoToTop />
         </StyledOutlet>
     )
 }
@@ -37,13 +40,12 @@ flex-direction: column;
 align-items: center;
 `
 const StyledItemCard = styled.div`
-position: relative;
-text-align: center;
+display: flex;
+flex-direction: column;
 cursor: pointer;
 overflow: hidden;
 background: white;
     img {
-        /* position: absolute; */
         width: 100%;
         height: 100%;
         object-fit: contain;
@@ -54,7 +56,6 @@ background: white;
     }
     @media ( max-width: 1300px ) {
         padding: 0rem;
-        border-radius: 1.5rem;
         margin-bottom: 1rem
     }
 `
@@ -62,7 +63,7 @@ background: white;
 const StyledCardContainer = styled.div`
 display: grid;
 justify-content: space-around;
-align-items: center;
+align-items: flex-start;
 max-width: 1258px;
 padding: 1rem;
 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

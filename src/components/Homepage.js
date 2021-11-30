@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { motion } from 'framer-motion'
 import { useGetListQuery } from "../services/asosAPI"
-import { MainPage, HeroPage } from "./"
+import { MainPage, HeroPage, Spinner } from "./"
 
 function Homepage() {
 
     const { data, isFetching } = useGetListQuery(27108);
 
-    if (isFetching) return "Loading..."
+    if (isFetching) return <Spinner />
     return (
         <StyledHomepage>
-            <HeroPage id="0" />
+            <HeroPage id={1} />
             <MainPage data={data} />
         </StyledHomepage>
     )

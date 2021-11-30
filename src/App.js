@@ -6,18 +6,25 @@ import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPa
 
 function App() {
 
-    // cart + add to cart
+    // cart + add/remove cart
 
     const [cartItems, setCartItems] = useState([])
 
-    const addToCartHandler = ({ id, name, price, img }) => {
+    const addToCartHandler = ({ itemId, name, brand, price, priceValue, img }) => {
         const addedItem = {
-            id: id,
+            id: itemId,
             name: name,
+            brand: brand,
             price: price,
+            priceValue: priceValue,
             img: img
         }
         setCartItems([...cartItems, addedItem])
+    }
+
+    const removeFromCartHandler = (itemId) => {
+        const newCart = cartItems.filter(item => item.id !== itemId);
+        setCartItems(newCart)
     }
 
 
@@ -35,7 +42,7 @@ function App() {
                         <Route exact path="/men" element={<MensPage />} />
                         <Route exact path="/outlet" element={<OutletPage />} />
                         <Route exact path="/:id" element={<ItemDetails addToCartHandler={addToCartHandler} />} />
-                        <Route exact path="/cart" element={<CartPage cartItems={cartItems} />} />
+                        <Route exact path="/cart" element={<CartPage cartItems={cartItems} removeFromCartHandler={removeFromCartHandler} />} />
                     </Routes>
                 </div>
             </div>

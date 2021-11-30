@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import GoToTop from './GoToTop'
 
 function MainPage({ data }) {
 
@@ -10,25 +12,26 @@ function MainPage({ data }) {
             <StyledMain>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
+                        <Link to={`/${item.id}`} key={item.id}>
                         <img src={`https://${item.imageUrl}`} alt={item.name} />
+                        </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                     </StyledItemCard>
                 ))}
-
+                <GoToTop />
             </StyledMain>
         </div>
     )
 }
 
 const StyledItemCard = styled.div`
-position: relative;
-text-align: center;
+display: flex;
+flex-direction: column;
 cursor: pointer;
 overflow: hidden;
 background: white;
     img {
-        /* position: absolute; */
         width: 100%;
         height: 100%;
         object-fit: contain;
@@ -39,7 +42,6 @@ background: white;
     }
     @media ( max-width: 1300px ) {
         padding: 0rem;
-        border-radius: 1.5rem;
         margin-bottom: 1rem
     }
 `
@@ -47,7 +49,7 @@ background: white;
 const StyledMain = styled.div`
 display: grid;
 justify-content: space-around;
-align-items: center;
+align-items: flex-start;
 max-width: 1258px;
 padding: 1rem;
 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

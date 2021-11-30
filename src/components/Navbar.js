@@ -2,6 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
+// @styled-icons/ionicons-outline/Bag
+// @styled-icons/ionicons-outline/BagCheck
+// @styled-icons/ionicons-outline/BagAdd <-- details
+// @styled-icons/ionicons-outline/Heart
+// @styled-icons/ionicons-outline/Person
+import { Bag, BagCheck, BagAdd, Heart, Person } from "@styled-icons/ionicons-outline"
+
 
 function Navbar() {
     return (
@@ -18,6 +25,11 @@ function Navbar() {
                 <Link to="men">.MEN</Link>
                 <Link to="outlet">.OUTLET</Link>
             </StyledLinks>
+            <StyledIcons>
+                <p><Person size="30" /></p>
+                <p><Heart size="30" /></p>
+                <Link to="/cart"><p><Bag size="30" /></p></Link>
+            </StyledIcons>
         </StyledNavbar>
     )
 }
@@ -45,6 +57,17 @@ const StyledNavbar = styled.div`
         font-weight: 400;
     }
 `
+
+const StyledIcons = styled.div`
+display: flex;
+width: 40%;
+justify-content: flex-end;
+p {
+padding: 0 1.5rem;
+cursor: pointer
+}
+`
+
 const StyledLogo = styled.div`
 display: flex;
 width: 40%;
