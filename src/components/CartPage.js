@@ -12,9 +12,16 @@ function CartPage({ cartItems, removeFromCartHandler }) {
         return total.toFixed(2)
     }
 
-    return (
-        <StyledCart>
-            <h3>Order Summary</h3>
+    const emptyCart = (
+        <StyledEmptyCart>
+            <h2>Your Bag is empty</h2>
+            <h1>:(</h1>
+        </StyledEmptyCart>
+    )
+
+    const fullCart = (
+        <>
+            <StyledTitle>Order Summary</StyledTitle>
             <StyledCartAll>
                 {cartItems.map(item => (
                     <StyledCartItem>
@@ -29,10 +36,36 @@ function CartPage({ cartItems, removeFromCartHandler }) {
                     </StyledCartItem>
                 ))}
             </StyledCartAll>
-            <h3>Final price: {`$${finalPrice()}`}</h3>
+            <StyledTitle>Final price: {`$${finalPrice()}`}</StyledTitle>
+        </>
+    )
+
+    return (
+        <StyledCart>
+            {cartItems.length > 0 ? fullCart : emptyCart}
         </StyledCart>
     )
 }
+
+const StyledTitle = styled.h3`
+padding: 4rem;
+`
+
+const StyledEmptyCart = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 60vh;
+width: 80%;
+h2 {
+    font-size: 3rem;
+}
+h1 {
+    font-size: 5rem;
+    transform: rotate(90deg)
+}
+`
 
 const StyledTrashBin = styled(TrashBin)`
 width: 1.6rem;
@@ -50,13 +83,16 @@ margin-left: 1rem;
 `
 
 const StyledCart = styled.div`
-height: 100vh;
+height: 85vh;
 width: 100%;
 margin-top: 15vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: flex-start;
+/* h3 {
+    margin: 4rem;
+} */
 `
 
 const StyledCartAll = styled.div`

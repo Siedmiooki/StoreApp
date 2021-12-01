@@ -41,7 +41,7 @@ function App() {
                         <Route exact path="/" element={<Homepage />} />
                         <Route exact path="/women" element={<WomensPage />} />
                         <Route exact path="/men" element={<MensPage />} />
-                        <Route exact path="/outlet" element={<OutletPage />} />
+                        <Route exact path="/outlet" element={<OutletPage addToCartHandler={addToCartHandler} />} />
                         <Route exact path="/:id" element={<ItemDetails addToCartHandler={addToCartHandler} />} />
                         <Route exact path="/cart" element={<CartPage cartItems={cartItems} removeFromCartHandler={removeFromCartHandler} />} />
                     </Routes>

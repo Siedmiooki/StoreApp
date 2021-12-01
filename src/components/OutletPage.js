@@ -4,13 +4,27 @@ import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage, Spinner } from "."
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
+import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 
-function OutletPage() {
+function OutletPage({ addToCartHandler }) {
 
     const { data, isFetching } = useGetListQuery(27391);
     if (isFetching) return <Spinner />
     const item = data.products
+
+    const addItemHandler = (item) => {
+        const addedItem = {
+            itemId: item.id,
+            name: item.name,
+            brand: item.brandName,
+            price: item.price.current.text,
+            priceValue: item.price.current.value,
+            img: `https://${item.imageUrl}`,
+            proId: `${item.id}+${new Date().valueOf()}`
+        }
+        addToCartHandler(addedItem)
+    }
 
     return (
         <StyledOutlet>
@@ -23,6 +37,10 @@ function OutletPage() {
                         </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
+                        <StyledAddTo>
+                            <Heart size="25" />
+                            <BagAdd size="25" onClick={() => addItemHandler(item)} />
+                        </StyledAddTo>
                     </StyledItemCard>
                 ))}
 
@@ -31,6 +49,21 @@ function OutletPage() {
         </StyledOutlet>
     )
 }
+
+const StyledAddTo = styled.div`
+position: absolute;
+display: flex;
+gap: 0.5rem;
+right: 1rem;
+bottom: 0rem;
+svg {
+ :hover {
+  color: #f75e53;
+}
+}
+
+
+`
 
 const StyledOutlet = styled.div`
 height: 100vh;
@@ -45,6 +78,7 @@ flex-direction: column;
 cursor: pointer;
 overflow: hidden;
 background: white;
+position: relative;
     img {
         width: 100%;
         height: 100%;

@@ -1,12 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-// import { motion } from 'framer-motion'
-// @styled-icons/ionicons-outline/Bag
-// @styled-icons/ionicons-outline/BagCheck
-// @styled-icons/ionicons-outline/BagAdd <-- details
-// @styled-icons/ionicons-outline/Heart
-// @styled-icons/ionicons-outline/Person
 import { Bag, BagCheck, BagAdd, Heart, Person } from "@styled-icons/ionicons-outline"
 
 
@@ -41,13 +35,15 @@ function Navbar({ cartItems }) {
 
 const StyledBag = styled.div`
 position: relative;
+padding: 0rem;
 div {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    padding: 0 !important;
     top: 1rem;
-    right: -1rem;
+    right: 0.5rem;
     width: 1.5rem;
     height: 1.5rem;
     color: white;
@@ -92,6 +88,11 @@ cursor: pointer
 div {
 padding: 0 1.5rem;
 cursor: pointer
+}
+svg {
+ :hover {
+  color: #f75e53;
+}
 }
 `
 
