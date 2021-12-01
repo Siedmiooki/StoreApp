@@ -6,6 +6,7 @@ import HTMLReactParser from "html-react-parser";
 import { Spinner } from '.';
 
 
+
 function ItemDetails({ addToCartHandler }) {
 
     const { id } = useParams();
@@ -19,7 +20,8 @@ function ItemDetails({ addToCartHandler }) {
             brand: data.brand.name,
             price: data.price.current.text,
             priceValue: data.price.current.value,
-            img: `https://${data.media.images[0].url}`
+            img: `https://${data.media.images[0].url}`,
+            proId: `${data.id}+${new Date().valueOf()}`
         }
         addToCartHandler(addedItem)
     }
@@ -43,7 +45,7 @@ function ItemDetails({ addToCartHandler }) {
                 <h2>{data.brand.name}</h2>
                 <p>{data.name}</p>
                 <h3>{data.price.current.text}</h3>
-                <button onClick={() => addItemHandler()}>add to bag</button>
+                <StyledAddButton onClick={() => addItemHandler()}>ADD TO CART</StyledAddButton>
                 <p>{data.info.aboutMe ? HTMLReactParser(data.info.aboutMe) : null}</p>
                 <p>{data.info.sizeAndFit ? HTMLReactParser(data.info.sizeAndFit) : null}</p>
                 <p className="careInfo">{data.info.careInfo ? HTMLReactParser(data.info.careInfo) : null}</p>
@@ -51,6 +53,21 @@ function ItemDetails({ addToCartHandler }) {
         </StyledDetailsContainer>
     )
 }
+
+const StyledAddButton = styled.button`
+display: flex;
+align-items: center;
+justify-content: space-around;
+margin-left: 2rem;
+background-color: #f75e53;
+color: white;
+font-size: 1rem;
+padding: 1rem 2.5rem;
+&:hover{
+        background-color: #f75e53;
+        color: white;
+    }
+`
 
 const StyledDescContainer = styled.div`
 width: 100%;

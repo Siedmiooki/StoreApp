@@ -10,20 +10,21 @@ function App() {
 
     const [cartItems, setCartItems] = useState([])
 
-    const addToCartHandler = ({ itemId, name, brand, price, priceValue, img }) => {
+    const addToCartHandler = ({ itemId, name, brand, price, priceValue, img, proId }) => {
         const addedItem = {
             id: itemId,
             name: name,
             brand: brand,
             price: price,
             priceValue: priceValue,
-            img: img
+            img: img,
+            proId: proId
         }
         setCartItems([...cartItems, addedItem])
     }
 
-    const removeFromCartHandler = (itemId) => {
-        const newCart = cartItems.filter(item => item.id !== itemId);
+    const removeFromCartHandler = (proId) => {
+        const newCart = cartItems.filter(item => item.proId !== proId);
         setCartItems(newCart)
     }
 
@@ -32,7 +33,7 @@ function App() {
         <div className="app">
             <GlobalStyles />
             <div className="navbar">
-                <Navbar />
+                <Navbar cartItems={cartItems} />
             </div>
             <div className="main">
                 <div className="routes">

@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { Bag, BagCheck, BagAdd, Heart, Person } from "@styled-icons/ionicons-outline"
 
 
-function Navbar() {
+function Navbar({ cartItems }) {
     return (
         <StyledNavbar>
             <StyledLogo>
@@ -28,11 +28,33 @@ function Navbar() {
             <StyledIcons>
                 <p><Person size="30" /></p>
                 <p><Heart size="30" /></p>
-                <Link to="/cart"><p><Bag size="30" /></p></Link>
+                <Link to="/cart">
+                    <StyledBag>
+                        {cartItems.length > 0 ? <BagCheck size="30" /> : <Bag size="30" />}
+                        {cartItems.length > 0 ? <div>{cartItems.length}</div> : null}
+                    </StyledBag>
+                </Link>
             </StyledIcons>
         </StyledNavbar>
     )
 }
+
+const StyledBag = styled.div`
+position: relative;
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: -1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    background: #f75e53;
+    border-radius: 50%;
+}
+`
 
 const StyledNavbar = styled.div`
     position: fixed;
@@ -62,7 +84,12 @@ const StyledIcons = styled.div`
 display: flex;
 width: 40%;
 justify-content: flex-end;
+margin-right: 2rem;
 p {
+padding: 0 1.5rem;
+cursor: pointer
+}
+div {
 padding: 0 1.5rem;
 cursor: pointer
 }
@@ -71,7 +98,7 @@ cursor: pointer
 const StyledLogo = styled.div`
 display: flex;
 width: 40%;
-margin-left: 3rem;
+margin-left: 2rem;
 h1 {
     letter-spacing: 5px;
 }

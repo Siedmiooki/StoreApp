@@ -20,11 +20,12 @@ function CartPage({ cartItems, removeFromCartHandler }) {
                     <StyledCartItem>
                         <img src={item.img} alt="pic" key={item.img} />
                         <StyledCartItemDesc>
+                            <h4>{item.brand}</h4>
                             <p><span>ID:</span> {item.id}</p>
                             <p>{item.name}</p>
                             <h3>{item.price}</h3>
                         </StyledCartItemDesc>
-                        <StyledTrashBin onClick={() => removeFromCartHandler(item.id)} />
+                        <StyledTrashBin onClick={() => removeFromCartHandler(item.proId)} />
                     </StyledCartItem>
                 ))}
             </StyledCartAll>
@@ -34,9 +35,9 @@ function CartPage({ cartItems, removeFromCartHandler }) {
 }
 
 const StyledTrashBin = styled(TrashBin)`
-width: 1.5rem;
+width: 1.6rem;
 align-self: flex-end;
-margin-left: 2rem;
+margin-left: 3rem;
 cursor: pointer;
 `
 
@@ -55,7 +56,7 @@ margin-top: 15vh;
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 `
 
 const StyledCartAll = styled.div`
