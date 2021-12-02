@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Cartcontext } from "../App";
 import { useParams } from "react-router-dom";
 import { useGetDetailsQuery } from "../services/asosAPI";
 import styled from 'styled-components';
@@ -7,28 +8,29 @@ import { Spinner } from '.';
 
 
 
-function ItemDetails({ addToCartHandler }) {
+function ItemDetails() {
 
+    const { dispatch } = useContext(Cartcontext)
     const { id } = useParams();
     const { data, isFetching } = useGetDetailsQuery(id);
     const [activePic, setActivePic] = useState()
 
-    const addItemHandler = () => {
-        const addedItem = {
-            itemId: data.id,
-            name: data.name,
-            brand: data.brand.name,
-            price: data.price.current.text,
-            priceValue: data.price.current.value,
-            img: `https://${data.media.images[0].url}`,
-            proId: `${data.id}+${new Date().valueOf()}`
-        }
-        addToCartHandler(addedItem)
+
+    const addToCart = (item) => {
+        dispatch({
+            type: "ADD_TO_CART_FROM_DETAILS",
+            payload: item
+        });
+
     }
 
-
     if (isFetching) return <Spinner />
-
+    if (data.errorCode) return (
+        <StyledErrorMsg>
+            <h2>{data.errorMessage}</h2>
+            <h1>:(</h1>
+        </StyledErrorMsg>
+    )
 
 
     return (
@@ -45,7 +47,7 @@ function ItemDetails({ addToCartHandler }) {
                 <h2>{data.brand.name}</h2>
                 <p>{data.name}</p>
                 <h3>{data.price.current.text}</h3>
-                <StyledAddButton onClick={() => addItemHandler()}>ADD TO CART</StyledAddButton>
+                <StyledAddButton onClick={() => addToCart(data)}>ADD TO CART</StyledAddButton>
                 <p>{data.info.aboutMe ? HTMLReactParser(data.info.aboutMe) : null}</p>
                 <p>{data.info.sizeAndFit ? HTMLReactParser(data.info.sizeAndFit) : null}</p>
                 <p className="careInfo">{data.info.careInfo ? HTMLReactParser(data.info.careInfo) : null}</p>
@@ -53,6 +55,22 @@ function ItemDetails({ addToCartHandler }) {
         </StyledDetailsContainer>
     )
 }
+
+const StyledErrorMsg = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+width: 100%;
+h2 {
+    font-size: 3rem;
+}
+h1 {
+    font-size: 5rem;
+    transform: rotate(90deg)
+}
+`
 
 const StyledAddButton = styled.button`
 display: flex;

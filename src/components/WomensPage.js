@@ -1,17 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Cartcontext } from "../App"
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage, Spinner } from "."
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
-
+import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 
 function WomensPage() {
 
+    const { dispatch } = useContext(Cartcontext)
     const { data, isFetching } = useGetListQuery(27108);
     if (isFetching) return <Spinner />
     const item = data.products
+
+    const addToCart = (item) => {
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: item
+        });
+
+    }
+
 
 
     return (
@@ -25,6 +36,10 @@ function WomensPage() {
                         </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
+                        <StyledAddTo>
+                            <Heart size="25" />
+                            <BagAdd size="25" onClick={() => addToCart(item)} />
+                        </StyledAddTo>
                     </StyledItemCard>
                 ))}
 
@@ -33,6 +48,19 @@ function WomensPage() {
         </StyledWomens>
     )
 }
+
+const StyledAddTo = styled.div`
+position: absolute;
+display: flex;
+gap: 0.5rem;
+right: 1rem;
+bottom: 0rem;
+svg {
+ :hover {
+  color: #f75e53;
+}
+}
+`
 
 const StyledWomens = styled.div`
 height: 100vh;
@@ -47,6 +75,7 @@ flex-direction: column;
 cursor: pointer;
 overflow: hidden;
 background: white;
+position: relative;
     img {
         width: 100%;
         height: 100%;

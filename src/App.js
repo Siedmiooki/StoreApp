@@ -1,39 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GlobalStyles from "./components/Globalstyles";
 import { Routes, Route } from "react-router-dom";
-import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage } from "./components"
+import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage } from "./components";
+import { createContext, useReducer } from "react";
+import { cartReducer, initState } from "./reducers/cartreducer"
 
+export const Cartcontext = createContext();
 
 function App() {
 
-    // cart + add/remove cart
-
-    const [cartItems, setCartItems] = useState([])
-
-    const addToCartHandler = ({ itemId, name, brand, price, priceValue, img, proId }) => {
-        const addedItem = {
-            id: itemId,
-            name: name,
-            brand: brand,
-            price: price,
-            priceValue: priceValue,
-            img: img,
-            proId: proId
-        }
-        setCartItems([...cartItems, addedItem])
-    }
-
-    const removeFromCartHandler = (proId) => {
-        const newCart = cartItems.filter(item => item.proId !== proId);
-        setCartItems(newCart)
-    }
-
+    const [state, dispatch] = useReducer(cartReducer, initState)
 
     return (
+        <Cartcontext.Provider value={{ state, dispatch }}>
         <div className="app">
             <GlobalStyles />
             <div className="navbar">
-                <Navbar cartItems={cartItems} />
+                    <Navbar />
             </div>
             <div className="main">
                 <div className="routes">
@@ -41,16 +24,16 @@ function App() {
                         <Route exact path="/" element={<Homepage />} />
                         <Route exact path="/women" element={<WomensPage />} />
                         <Route exact path="/men" element={<MensPage />} />
-                        <Route exact path="/outlet" element={<OutletPage addToCartHandler={addToCartHandler} />} />
-                        <Route exact path="/:id" element={<ItemDetails addToCartHandler={addToCartHandler} />} />
-                        <Route exact path="/cart" element={<CartPage cartItems={cartItems} removeFromCartHandler={removeFromCartHandler} />} />
+                            <Route exact path="/outlet" element={<OutletPage />} />
+                            <Route exact path="/:id" element={<ItemDetails />} />
+                            <Route exact path="/cart" element={<CartPage />} />
                     </Routes>
                 </div>
             </div>
-            <div className="footer">
-
+                <div className="footer">
             </div>
         </div>
+        </Cartcontext.Provider>
     )
 }
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Cartcontext } from "../App"
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage, Spinner } from "."
@@ -7,23 +8,19 @@ import GoToTop from './GoToTop'
 import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 
-function OutletPage({ addToCartHandler }) {
+function OutletPage() {
 
+    const { dispatch } = useContext(Cartcontext)
     const { data, isFetching } = useGetListQuery(27391);
     if (isFetching) return <Spinner />
     const item = data.products
 
-    const addItemHandler = (item) => {
-        const addedItem = {
-            itemId: item.id,
-            name: item.name,
-            brand: item.brandName,
-            price: item.price.current.text,
-            priceValue: item.price.current.value,
-            img: `https://${item.imageUrl}`,
-            proId: `${item.id}+${new Date().valueOf()}`
-        }
-        addToCartHandler(addedItem)
+    const addToCart = (item) => {
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: item
+        });
+
     }
 
     return (
@@ -39,7 +36,7 @@ function OutletPage({ addToCartHandler }) {
                         <p><strong>{item.price.current.text}</strong></p>
                         <StyledAddTo>
                             <Heart size="25" />
-                            <BagAdd size="25" onClick={() => addItemHandler(item)} />
+                            <BagAdd size="25" onClick={() => addToCart(item)} />
                         </StyledAddTo>
                     </StyledItemCard>
                 ))}
@@ -61,8 +58,6 @@ svg {
   color: #f75e53;
 }
 }
-
-
 `
 
 const StyledOutlet = styled.div`

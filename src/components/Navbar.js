@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Cartcontext } from '../App'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Bag, BagCheck, BagAdd, Heart, Person } from "@styled-icons/ionicons-outline"
+import { Bag, BagCheck, Heart, Person } from "@styled-icons/ionicons-outline"
 
 
-function Navbar({ cartItems }) {
+function Navbar() {
+
+    const { state } = useContext(Cartcontext)
+
     return (
         <StyledNavbar>
             <StyledLogo>
@@ -24,8 +28,8 @@ function Navbar({ cartItems }) {
                 <p><Heart size="30" /></p>
                 <Link to="/cart">
                     <StyledBag>
-                        {cartItems.length > 0 ? <BagCheck size="30" /> : <Bag size="30" />}
-                        {cartItems.length > 0 ? <div>{cartItems.length}</div> : null}
+                        {state.items.length > 0 ? <BagCheck size="30" /> : <Bag size="30" />}
+                        {state.items.length > 0 ? <div>{state.items.length}</div> : null}
                     </StyledBag>
                 </Link>
             </StyledIcons>

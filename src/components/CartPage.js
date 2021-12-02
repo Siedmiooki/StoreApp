@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { TrashBin } from '@styled-icons/ionicons-outline'
+import { Cartcontext } from '../App'
 
-function CartPage({ cartItems, removeFromCartHandler }) {
+function CartPage() {
+
+    const { state, dispatch } = useContext(Cartcontext)
+
+    const removeFromCart = (item) => {
+        dispatch({
+            type: "REMOVE_FROM_CART",
+            payload: item
+        })
+    }
 
     const finalPrice = () => {
         let total = 0;
-        for (let i = 0; i < cartItems.length; i++) {
-            total = total + cartItems[i].priceValue
+        for (let i = 0; i < state.items.length; i++) {
+            total = total + state.items[i].priceValue
         }
         return total.toFixed(2)
     }
@@ -23,16 +33,18 @@ function CartPage({ cartItems, removeFromCartHandler }) {
         <>
             <StyledTitle>Order Summary</StyledTitle>
             <StyledCartAll>
-                {cartItems.map(item => (
+                {state.items.map(item => (
                     <StyledCartItem>
                         <img src={item.img} alt="pic" key={item.img} />
                         <StyledCartItemDesc>
                             <h4>{item.brand}</h4>
-                            <p><span>ID:</span> {item.id}</p>
+                            <p>ID: {item.itemId}</p>
                             <p>{item.name}</p>
                             <h3>{item.price}</h3>
                         </StyledCartItemDesc>
-                        <StyledTrashBin onClick={() => removeFromCartHandler(item.proId)} />
+                        <StyledTrashBin
+                            onClick={() => removeFromCart(item)}
+                        />
                     </StyledCartItem>
                 ))}
             </StyledCartAll>
@@ -42,7 +54,7 @@ function CartPage({ cartItems, removeFromCartHandler }) {
 
     return (
         <StyledCart>
-            {cartItems.length > 0 ? fullCart : emptyCart}
+            {state.items.length > 0 ? fullCart : emptyCart}
         </StyledCart>
     )
 }
