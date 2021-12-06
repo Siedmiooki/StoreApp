@@ -1,10 +1,26 @@
 export const initState = {
     items: [],
     likes: [],
+    orders: [],
 };
 
 export const storeReducer = (state, action) => {
     switch (action.type) {
+        case "ADD_ORDER":
+            if (action.payload === "") {
+                return state
+            }
+            const orderInfo = action.payload;
+            const orderItems = state.items
+            const newOrder = {
+                orderInfo,
+                orderItems
+            }
+            return {
+                ...state,
+                orders: [...state.orders, newOrder],
+                items: []
+            }
         case "ADD_TO_CART":
             if (action.payload === "") {
                 return state

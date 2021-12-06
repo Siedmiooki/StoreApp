@@ -1,7 +1,13 @@
 import React, { useState, useContext } from 'react'
+import { Storecontext } from "../App"
 import styled from 'styled-components'
+import { v4 as uuidv4 } from 'uuid';
 
 function OrderForm() {
+
+    const { dispatch } = useContext(Storecontext)
+
+
 
     const [formInfo, setFormInfo] = useState({
         firstname: "",
@@ -10,17 +16,21 @@ function OrderForm() {
         city: "",
         street: "",
         houseno: "",
-        info: ""
+        info: "",
+        orderId: uuidv4()
     })
 
-    const handleSubmit = (e) => {
+    const addOrder = (e, formInfo) => {
         e.preventDefault();
-        console.log(formInfo)
+        dispatch({
+            type: "ADD_ORDER",
+            payload: formInfo
+        });
     }
 
     return (
         <div>
-            <StyledFormBox onSubmit={handleSubmit}>
+            <StyledFormBox onSubmit={(e) => addOrder(e, formInfo)}>
                 <InputStyled type="text" placeholder="first name" onChange={(e) => setFormInfo({ ...formInfo, firstname: e.target.value })} />
                 <InputStyled type="text" placeholder="second name" onChange={(e) => setFormInfo({ ...formInfo, secondname: e.target.value })} />
                 <InputStyled type="text" placeholder="e-mail" onChange={(e) => setFormInfo({ ...formInfo, email: e.target.value })} />

@@ -19,12 +19,17 @@ function Navbar() {
                 </Link>
             </StyledLogo>
             <StyledLinks>
-                <Link to="women">.WOMEN</Link>
-                <Link to="men">.MEN</Link>
-                <Link to="outlet">.OUTLET</Link>
+                <Link to="/women">.WOMEN</Link>
+                <Link to="/men">.MEN</Link>
+                <Link to="/outlet">.OUTLET</Link>
             </StyledLinks>
             <StyledIcons>
-                <p><Person size="30" /></p>
+                <Link to="/userpage">
+                    <StyledPerson>
+                        <Person size="30" />
+                        {state.orders.length > 0 ? <div>{state.orders.length}</div> : null}
+                    </StyledPerson>
+                </Link>
                 <Link to="/mylist">
                     <StyledHeart>
                         <Heart size="30" />
@@ -41,6 +46,25 @@ function Navbar() {
         </StyledNavbar>
     )
 }
+
+const StyledPerson = styled.div`
+position: relative;
+padding: 0rem;
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 0 !important;
+    top: 1rem;
+    right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    background: #f75e53;
+    border-radius: 50%;
+}
+`
 
 const StyledBag = styled.div`
 position: relative;

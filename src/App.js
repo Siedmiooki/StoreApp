@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from "./components/Globalstyles";
 import { Routes, Route } from "react-router-dom";
-import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage, MyListPage } from "./components";
+import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage, MyListPage, UserPage } from "./components";
 import { createContext, useReducer } from "react";
 import { storeReducer, initState } from "./reducers/storereducer"
 
@@ -28,6 +28,7 @@ function App() {
                             <Route exact path="/:id" element={<ItemDetails />} />
                             <Route exact path="/cart" element={<CartPage />} />
                             <Route exact path="/mylist" element={<MyListPage />} />
+                            <Route exact path="/userpage" element={<UserPage />} />
                     </Routes>
                 </div>
             </div>

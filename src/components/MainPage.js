@@ -15,7 +15,6 @@ function MainPage({ data }) {
             type: "ADD_TO_CART",
             payload: item
         });
-
     }
 
     const addToLikes = (item) => {
