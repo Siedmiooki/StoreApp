@@ -1,18 +1,18 @@
 import React from 'react';
 import GlobalStyles from "./components/Globalstyles";
 import { Routes, Route } from "react-router-dom";
-import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage } from "./components";
+import { Navbar, Homepage, WomensPage, MensPage, OutletPage, ItemDetails, CartPage, MyListPage } from "./components";
 import { createContext, useReducer } from "react";
-import { cartReducer, initState } from "./reducers/cartreducer"
+import { storeReducer, initState } from "./reducers/storereducer"
 
-export const Cartcontext = createContext();
+export const Storecontext = createContext();
 
 function App() {
 
-    const [state, dispatch] = useReducer(cartReducer, initState)
+    const [state, dispatch] = useReducer(storeReducer, initState)
 
     return (
-        <Cartcontext.Provider value={{ state, dispatch }}>
+        <Storecontext.Provider value={{ state, dispatch }}>
         <div className="app">
             <GlobalStyles />
             <div className="navbar">
@@ -27,13 +27,14 @@ function App() {
                             <Route exact path="/outlet" element={<OutletPage />} />
                             <Route exact path="/:id" element={<ItemDetails />} />
                             <Route exact path="/cart" element={<CartPage />} />
+                            <Route exact path="/mylist" element={<MyListPage />} />
                     </Routes>
                 </div>
             </div>
                 <div className="footer">
             </div>
         </div>
-        </Cartcontext.Provider>
+        </Storecontext.Provider>
     )
 }
 

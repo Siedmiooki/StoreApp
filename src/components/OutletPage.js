@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Cartcontext } from "../App"
+import { Storecontext } from "../App"
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage, Spinner } from "."
@@ -10,7 +10,7 @@ import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 function OutletPage() {
 
-    const { dispatch } = useContext(Cartcontext)
+    const { state, dispatch } = useContext(Storecontext)
     const { data, isFetching } = useGetListQuery(27391);
     if (isFetching) return <Spinner />
     const item = data.products
@@ -21,6 +21,12 @@ function OutletPage() {
             payload: item
         });
 
+    }
+    const addToLikes = (item) => {
+        dispatch({
+            type: "ADD_TO_LIKES",
+            payload: item
+        });
     }
 
     return (
@@ -35,7 +41,7 @@ function OutletPage() {
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                         <StyledAddTo>
-                            <Heart size="25" />
+                            <Heart size="25" onClick={() => addToLikes(item)} />
                             <BagAdd size="25" onClick={() => addToCart(item)} />
                         </StyledAddTo>
                     </StyledItemCard>

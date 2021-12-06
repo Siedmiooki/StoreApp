@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Cartcontext } from '../App'
+import { Storecontext } from '../App'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Bag, BagCheck, Heart, Person } from "@styled-icons/ionicons-outline"
@@ -7,7 +7,7 @@ import { Bag, BagCheck, Heart, Person } from "@styled-icons/ionicons-outline"
 
 function Navbar() {
 
-    const { state } = useContext(Cartcontext)
+    const { state } = useContext(Storecontext)
 
     return (
         <StyledNavbar>
@@ -25,7 +25,12 @@ function Navbar() {
             </StyledLinks>
             <StyledIcons>
                 <p><Person size="30" /></p>
-                <p><Heart size="30" /></p>
+                <Link to="/mylist">
+                    <StyledHeart>
+                        <Heart size="30" />
+                        {state.likes.length > 0 ? <div>{state.likes.length}</div> : null}
+                    </StyledHeart>
+                </Link>
                 <Link to="/cart">
                     <StyledBag>
                         {state.items.length > 0 ? <BagCheck size="30" /> : <Bag size="30" />}
@@ -48,6 +53,25 @@ div {
     padding: 0 !important;
     top: 1rem;
     right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    background: #f75e53;
+    border-radius: 50%;
+}
+`
+
+const StyledHeart = styled.div`
+position: relative;
+padding: 0rem;
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 0 !important;
+    top: 1rem;
+    right: 0.8rem;
     width: 1.5rem;
     height: 1.5rem;
     color: white;

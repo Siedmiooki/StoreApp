@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Cartcontext } from "../App";
+import { Storecontext } from "../App";
 import { useParams } from "react-router-dom";
 import { useGetDetailsQuery } from "../services/asosAPI";
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ import { Spinner } from '.';
 
 function ItemDetails() {
 
-    const { dispatch } = useContext(Cartcontext)
+    const { dispatch } = useContext(Storecontext)
     const { id } = useParams();
     const { data, isFetching } = useGetDetailsQuery(id);
     const [activePic, setActivePic] = useState()

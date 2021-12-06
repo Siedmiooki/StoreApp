@@ -18,6 +18,11 @@ html {
         background-color: white
     }
 }
+a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Jost';
+}
 button {
     background-color: white;
     color: black;
@@ -34,4 +39,5 @@ button {
     }
 }
 `
+
 export default GlobalStyles

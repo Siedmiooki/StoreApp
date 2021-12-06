@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Cartcontext } from "../App"
+import { Storecontext } from "../App"
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { HeroPage, Spinner } from "."
@@ -10,7 +10,7 @@ import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 function WomensPage() {
 
-    const { dispatch } = useContext(Cartcontext)
+    const { dispatch } = useContext(Storecontext)
     const { data, isFetching } = useGetListQuery(27108);
     if (isFetching) return <Spinner />
     const item = data.products

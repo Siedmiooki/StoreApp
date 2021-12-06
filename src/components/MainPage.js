@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Cartcontext } from "../App"
+import { Storecontext } from "../App"
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
@@ -7,7 +7,7 @@ import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 function MainPage({ data }) {
 
-    const { dispatch } = useContext(Cartcontext)
+    const { dispatch } = useContext(Storecontext)
     const item = data.products
 
     const addToCart = (item) => {
@@ -16,6 +16,13 @@ function MainPage({ data }) {
             payload: item
         });
 
+    }
+
+    const addToLikes = (item) => {
+        dispatch({
+            type: "ADD_TO_LIKES",
+            payload: item
+        });
     }
 
     return (
@@ -29,7 +36,7 @@ function MainPage({ data }) {
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                         <StyledAddTo>
-                            <Heart size="25" />
+                            <Heart size="25" onClick={() => addToLikes(item)} />
                             <BagAdd size="25" onClick={() => addToCart(item)} />
                         </StyledAddTo>
                     </StyledItemCard>
