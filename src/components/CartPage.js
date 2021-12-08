@@ -39,7 +39,7 @@ function CartPage() {
 
     const fullCart = (
         <>
-            <StyledTitle>Order Summary</StyledTitle>
+            <StyledTitle>Order summary</StyledTitle>
             <StyledCartAll>
                 <StyledCartBox>
                 {state.items.map(item => (

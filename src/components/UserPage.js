@@ -16,8 +16,8 @@ function UserPage() {
 
     const fullHistory = (
         <>
-            <button onClick={() => console.log(state)}>show state</button>
-            <StyledTitle>Your Order History</StyledTitle>
+            {/* <button onClick={() => console.log(state)}>show state</button> */}
+            <StyledTitle>My order history</StyledTitle>
             <StyledOrdersContainer>
                 {state.orders.map(order => (
                     <StyledOrdersBox key={order.orderInfo.orderId}>

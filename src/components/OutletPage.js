@@ -10,7 +10,7 @@ import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 function OutletPage() {
 
-    const { state, dispatch } = useContext(Storecontext)
+    const { dispatch } = useContext(Storecontext)
     const { data, isFetching } = useGetListQuery(27391);
     if (isFetching) return <Spinner />
     const item = data.products

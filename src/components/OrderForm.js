@@ -7,8 +7,6 @@ function OrderForm({ total }) {
 
     const { dispatch } = useContext(Storecontext)
 
-
-
     const [formInfo, setFormInfo] = useState({
         firstname: "",
         secondname: "",
@@ -38,7 +36,7 @@ function OrderForm({ total }) {
                 <InputStyled type="text" placeholder="city" onChange={(e) => setFormInfo({ ...formInfo, city: e.target.value })} />
                 <InputStyled type="text" placeholder="street name" onChange={(e) => setFormInfo({ ...formInfo, street: e.target.value })} />
                 <InputStyled type="text" placeholder="house no." onChange={(e) => setFormInfo({ ...formInfo, houseno: e.target.value })} />
-                <TextareaStyled rows="6" placeholder="additional info" onChange={(e) => setFormInfo({ ...formInfo, info: e.target.value })} />
+                {/* <TextareaStyled rows="6" placeholder="additional info" onChange={(e) => setFormInfo({ ...formInfo, info: e.target.value })} /> */}
                 <ButtonStyled type="submit">Confirm Order</ButtonStyled>
             </StyledFormBox>
         </div>
@@ -92,7 +90,6 @@ const TextareaStyled = styled.textarea`
 ::-webkit-scrollbar-track {
     background-color: black
 }
-
 `
 
 const InputStyled = styled.input`
@@ -109,7 +106,6 @@ const InputStyled = styled.input`
 :focus::-webkit-input-placeholder {
     color: #2e2c2c;
 }
-
 `
 
 export default OrderForm

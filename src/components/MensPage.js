@@ -19,7 +19,12 @@ function MensPage() {
             type: "ADD_TO_CART",
             payload: item
         });
-
+    }
+    const addToLikes = (item) => {
+        dispatch({
+            type: "ADD_TO_LIKES",
+            payload: item
+        });
     }
 
     return (
@@ -34,7 +39,7 @@ function MensPage() {
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
                         <StyledAddTo>
-                            <Heart size="25" />
+                            <Heart size="25" onClick={() => addToLikes(item)} />
                             <BagAdd size="25" onClick={() => addToCart(item)} />
                         </StyledAddTo>
                     </StyledItemCard>

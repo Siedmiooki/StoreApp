@@ -15,13 +15,13 @@ function MyListPage() {
         })
     }
 
-    const finalPrice = () => {
-        let total = 0;
-        for (let i = 0; i < state.likes.length; i++) {
-            total = total + state.likes[i].priceValue
-        }
-        return total.toFixed(2)
-    }
+    // const finalPrice = () => {
+    //     let total = 0;
+    //     for (let i = 0; i < state.likes.length; i++) {
+    //         total = total + state.likes[i].priceValue
+    //     }
+    //     return total.toFixed(2)
+    // }
 
     const emptyLikes = (
         <StyledEmptyLikes>
@@ -32,7 +32,7 @@ function MyListPage() {
 
     const fullLikes = (
         <>
-            <StyledTitle>My List</StyledTitle>
+            <StyledTitle>My favorites</StyledTitle>
             <StyledCartAll>
                 {state.likes.map(item => (
                     <StyledCartItem key={item.itemId}>
@@ -61,6 +61,26 @@ function MyListPage() {
         </StyledCart>
     )
 }
+
+const StyledCartAll = styled.div`
+display: grid;
+grid-template-columns: 1fr 1fr;
+width: 80%;
+padding: 2rem;
+border-top: 1px solid #b3b1b1;
+`
+
+const StyledCartItem = styled.div`
+display: flex;
+flex-direction: row;
+height: 15vh;
+width: 100%;
+padding: 1rem;
+margin-bottom: 1rem;
+img {
+    height: 100%;
+}
+`
 
 const StyledTitle = styled.h3`
 padding: 2rem;
@@ -110,23 +130,6 @@ justify-content: flex-start;
 } */
 `
 
-const StyledCartAll = styled.div`
-width: 80%;
-padding: 2rem;
-border-top: 1px solid #b3b1b1;
-border-bottom: 1px solid #b3b1b1;
-`
 
-const StyledCartItem = styled.div`
-display: flex;
-flex-direction: row;
-height: 15vh;
-width: 80%;
-padding: 1rem;
-margin-bottom: 1rem;
-img {
-    height: 100%;
-}
-`
 
 export default MyListPage
