@@ -11,3 +11,10 @@ export { default as MyListPage } from "./MyListPage"
 export { default as Spinner } from "./Spinner"
 export { default as OrderForm } from "./OrderForm"
 export { default as UserPage } from "./UserPage"
+export { default as NouvRomantiqueCollection } from "./NouvRomantiqueCollection"
+export { default as LoftExtraordinaryCollection } from "./LoftExtraordinaryCollection"
+export { default as SpecialHypersaleCollection } from "./SpecialHypersaleCollection"
+
+
+
+

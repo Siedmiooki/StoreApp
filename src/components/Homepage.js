@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useGetListQuery } from "../services/asosAPI"
 import { MainPage, HeroPage, Spinner } from "./"
+import { Link } from 'react-router-dom'
 
 function Homepage() {
 
@@ -10,7 +11,9 @@ function Homepage() {
     if (isFetching) return <Spinner />
     return (
         <StyledHomepage>
+            <Link to="/nouvromantique">
             <HeroPage id={1} />
+            </Link>
             <MainPage data={data} />
         </StyledHomepage>
     )

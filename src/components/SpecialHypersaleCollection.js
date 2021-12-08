@@ -8,11 +8,13 @@ import GoToTop from './GoToTop'
 import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
 
 
-function OutletPage() {
+function SpecialHypersaleCollection() {
 
     const { dispatch } = useContext(Storecontext)
-    const { data, isFetching } = useGetListQuery(27391);
+    const { data, isFetching } = useGetListQuery(50066);
+
     if (isFetching) return <Spinner />
+
     const item = data.products
 
     const addToCart = (item) => {
@@ -20,7 +22,6 @@ function OutletPage() {
             type: "ADD_TO_CART",
             payload: item
         });
-
     }
     const addToLikes = (item) => {
         dispatch({
@@ -30,15 +31,13 @@ function OutletPage() {
     }
 
     return (
-        <StyledOutlet>
-            <Link to="/specialhypersale">
-                <HeroPage id={0} />
-            </Link>
+        <StyledWomens>
+            <HeroPage id={0} />
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
                         <Link to={`/${item.id}`} key={item.id}>
-                        <img src={`https://${item.imageUrl}`} alt={item.name} />
+                            <img src={`https://${item.imageUrl}`} alt={item.name} />
                         </Link>
                         <p>{item.name}</p>
                         <p><strong>{item.price.current.text}</strong></p>
@@ -51,7 +50,7 @@ function OutletPage() {
 
             </StyledCardContainer>
             <GoToTop />
-        </StyledOutlet>
+        </StyledWomens>
     )
 }
 
@@ -68,7 +67,7 @@ svg {
 }
 `
 
-const StyledOutlet = styled.div`
+const StyledWomens = styled.div`
 height: 100vh;
 width: 100%;
 display: flex;
@@ -109,4 +108,4 @@ grid-row-gap: 5rem;
 background: white;
 `
 
-export default OutletPage
+export default SpecialHypersaleCollection

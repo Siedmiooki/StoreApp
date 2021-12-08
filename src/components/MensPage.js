@@ -29,7 +29,9 @@ function MensPage() {
 
     return (
         <StyledMens>
+            <Link to="/loftextraordinary">
             <HeroPage id={2} />
+            </Link>
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>

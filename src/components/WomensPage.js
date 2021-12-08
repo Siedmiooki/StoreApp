@@ -12,7 +12,9 @@ function WomensPage() {
 
     const { dispatch } = useContext(Storecontext)
     const { data, isFetching } = useGetListQuery(27108);
+
     if (isFetching) return <Spinner />
+
     const item = data.products
 
     const addToCart = (item) => {
@@ -30,7 +32,9 @@ function WomensPage() {
 
     return (
         <StyledWomens>
+            <Link to="/nouvromantique">
             <HeroPage id={1} />
+            </Link>
             <StyledCardContainer>
                 {item.map((item) => (
                     <StyledItemCard key={item.id}>
