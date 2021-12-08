@@ -11,9 +11,10 @@ function Navbar() {
 
     return (
         <StyledNavbar>
+            <StyledNavBox>
             <StyledLogo>
                 <Link to="/">
-                    <h1>.OK$A</h1>
+                        <h1><span>.</span>OK$A</h1>
                     <p>Trend</p>
                     <p>Store</p>
                 </Link>
@@ -43,9 +44,44 @@ function Navbar() {
                     </StyledBag>
                 </Link>
             </StyledIcons>
+            </StyledNavBox>
         </StyledNavbar>
     )
 }
+
+const StyledNavbar = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 10vh;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    justify-content: center;
+    box-shadow: 0 2px 12px 0px lightgray;
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    h1 {
+        padding: 1rem;
+        letter-spacing: 2px;
+        font-weight: 400;
+    }
+    span {
+        color: #f75e53;
+    }
+`
+
+const StyledNavBox = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 1680px;
+`
 
 const StyledPerson = styled.div`
 position: relative;
@@ -95,7 +131,7 @@ div {
     position: absolute;
     padding: 0 !important;
     top: 1rem;
-    right: 0.8rem;
+    right: 0.7rem;
     width: 1.5rem;
     height: 1.5rem;
     color: white;
@@ -104,29 +140,7 @@ div {
 }
 `
 
-const StyledNavbar = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    height: 10vh;
-    width: 100%;
-    background: white;
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    justify-content: space-between;
-    box-shadow: 0 2px 12px 0px lightgray;
-    a {
-        color: black;
-        text-decoration: none;
-    }
-    h1 {
-        padding: 1rem;
-        letter-spacing: 2px;
-        font-weight: 400;
-    }
-`
+
 
 const StyledIcons = styled.div`
 display: flex;
@@ -172,6 +186,9 @@ a {
     color: black;
     text-decoration: none;
     letter-spacing: 2px;
+    :hover {
+  color: #f75e53;
+}
 }
 `
 

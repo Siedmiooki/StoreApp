@@ -13,7 +13,7 @@ function App() {
 
     return (
         <Storecontext.Provider value={{ state, dispatch }}>
-        <div className="app">
+            <div className="app">
             <GlobalStyles />
             <div className="navbar">
                     <Navbar />

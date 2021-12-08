@@ -11,7 +11,7 @@ export const storeReducer = (state, action) => {
                 return state
             }
             const orderInfo = action.payload;
-            const orderItems = state.items
+            const orderItems = state.items;
             const newOrder = {
                 orderInfo,
                 orderItems

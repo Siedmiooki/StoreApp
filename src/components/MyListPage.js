@@ -24,15 +24,15 @@ function MyListPage() {
     }
 
     const emptyLikes = (
-        <StyledEmptyCart>
+        <StyledEmptyLikes>
             <h2>Your list is empty</h2>
             <h1>:(</h1>
-        </StyledEmptyCart>
+        </StyledEmptyLikes>
     )
 
     const fullLikes = (
         <>
-            <StyledTitle>Order Summary</StyledTitle>
+            <StyledTitle>My List</StyledTitle>
             <StyledCartAll>
                 {state.likes.map(item => (
                     <StyledCartItem key={item.itemId}>
@@ -51,7 +51,7 @@ function MyListPage() {
                     </StyledCartItem>
                 ))}
             </StyledCartAll>
-            <StyledTitle>Final price: {`$${finalPrice()}`}</StyledTitle>
+            {/* <StyledTitle>Final price: {`$${finalPrice()}`}</StyledTitle> */}
         </>
     )
 
@@ -63,10 +63,10 @@ function MyListPage() {
 }
 
 const StyledTitle = styled.h3`
-padding: 4rem;
+padding: 2rem;
 `
 
-const StyledEmptyCart = styled.div`
+const StyledEmptyLikes = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -100,7 +100,7 @@ margin-left: 1rem;
 const StyledCart = styled.div`
 height: 85vh;
 width: 100%;
-margin-top: 15vh;
+margin-top: 10vh;
 display: flex;
 flex-direction: column;
 align-items: center;

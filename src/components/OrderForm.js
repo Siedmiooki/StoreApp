@@ -3,7 +3,7 @@ import { Storecontext } from "../App"
 import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid';
 
-function OrderForm() {
+function OrderForm({ total }) {
 
     const { dispatch } = useContext(Storecontext)
 
@@ -17,7 +17,8 @@ function OrderForm() {
         street: "",
         houseno: "",
         info: "",
-        orderId: uuidv4()
+        orderId: uuidv4(),
+        orderValue: total
     })
 
     const addOrder = (e, formInfo) => {
@@ -64,7 +65,7 @@ const ButtonStyled = styled.button`
     color: white;
     margin-top: 1rem;
 :hover{
-    
+    background: #b80c00;
 }
 `
 

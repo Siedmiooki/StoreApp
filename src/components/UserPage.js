@@ -1,67 +1,92 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
+import GoToTop from './GoToTop'
 import { Storecontext } from '../App'
 // import { Link } from 'react-router-dom'
 
 function UserPage() {
     const { state } = useContext(Storecontext)
 
-    const emptyLikes = (
-        <StyledEmptyCart>
-            <h2>No orders</h2>
+    const emptyHistory = (
+        <StyledEmptyHistory>
+            <h2>You have no order history</h2>
             <h1>:(</h1>
-        </StyledEmptyCart>
+        </StyledEmptyHistory>
     )
 
-    const fullLikes = (
+    const fullHistory = (
         <>
             <button onClick={() => console.log(state)}>show state</button>
-            <StyledTitle>Order History</StyledTitle>
-            <StyledOrderContainer>
+            <StyledTitle>Your Order History</StyledTitle>
+            <StyledOrdersContainer>
                 {state.orders.map(order => (
-                    <>
-                        <h4>Order ID: {order.orderInfo.orderId}</h4>
+                    <StyledOrdersBox key={order.orderInfo.orderId}>
+                        <StyledOrders>
+                            <h5>Order ID: {order.orderInfo.orderId}</h5>
+                            <h5>{`Order value: $${order.orderInfo.orderValue}`}</h5>
                         {order.orderItems.map(item => (
-                            <StyledOrder>
+                            <StyledOrder key={item.itemId}>
                                 <img src={item.img} alt="pic" />
-                                <StyledOrderItemDesc key={item.itemId}>
+                                <StyledOrderItemDesc>
                                     <h4>{item.brand}</h4>
                                     <p>ID: {item.itemId}</p>
-                                    <p>1x {item.name}</p>
+                                    <p>{item.name}</p>
                                     <p>{item.price}</p>
                                 </StyledOrderItemDesc>
                             </StyledOrder>
                         ))}
-                        <StyledOrderValue>Order value: </StyledOrderValue>
-                    </>
+                        </StyledOrders>
+                        <StyledBillingAddress>
+                            <h4>Billing Adress</h4>
+                            <p>name: {order.orderInfo.firstname} {order.orderInfo.secondname}</p>
+                            <p>mail: {order.orderInfo.email}</p>
+                            <p>city: {order.orderInfo.city}</p>
+                            <p>street: {order.orderInfo.street} {order.orderInfo.houseno}</p>
+                            {order.orderInfo.info ? <p>info: {order.orderInfo.info}</p> : null}
+                        </StyledBillingAddress>
+                    </StyledOrdersBox>
                 ))}
-            </StyledOrderContainer>
-
+                <GoToTop />
+            </StyledOrdersContainer>
         </>
     )
 
     return (
-        <StyledCart>
-            {state.orders.length > 0 ? fullLikes : emptyLikes}
-        </StyledCart>
+        <StyledHistory>
+            {state.orders.length > 0 ? fullHistory : emptyHistory}
+        </StyledHistory>
     )
 }
 
-const StyledOrderContainer = styled.div`
+const StyledOrdersContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height: 90vh;
 width: 80%;
 padding: 2rem;
+`
+
+const StyledOrdersBox = styled.div`
+display: flex;
+padding: 1rem 0rem;
 border-top: 1px solid #b3b1b1;
-border-bottom: 1px solid #b3b1b1;
-h4 {
-    margin-top: 2rem;
-}
+`
+
+const StyledOrders = styled.div`
+flex: 3;
+margin: 1rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `
 
 const StyledOrder = styled.div`
 display: flex;
 flex-direction: row;
 height: 15vh;
-width: 80%;
+width: 100%;
 padding: 1rem;
 margin-bottom: 1rem;
 img {
@@ -77,16 +102,27 @@ justify-content: flex-end;
 margin-left: 1rem;
 `
 
+const StyledBillingAddress = styled.div`
+flex: 1;
+height: 100%;
+margin: 1rem;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+h4 {
+    margin: 2rem 1rem;
+}
+p {
+    margin: 1rem;
+}
+`
+
 const StyledTitle = styled.h3`
-padding: 4rem;
+padding: 2rem;
 `
 
-const StyledOrderValue = styled.h3`
-padding: 2rem 0rem;
-border-bottom: 1px solid #b3b1b1;
-`
-
-const StyledEmptyCart = styled.div`
+const StyledEmptyHistory = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -102,29 +138,14 @@ h1 {
 }
 `
 
-const StyledCartItemDesc = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: flex-end;
-margin-left: 1rem;
-`
-
-const StyledCart = styled.div`
+const StyledHistory = styled.div`
 height: 85vh;
 width: 100%;
-margin-top: 15vh;
+margin-top: 10vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: flex-start;
-/* h3 {
-    margin: 4rem;
-} */
 `
-
-
-
-
 
 export default UserPage

@@ -1,12 +1,27 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { TrashBin } from '@styled-icons/ionicons-outline'
+import GoToTop from './GoToTop'
 import { Storecontext } from '../App'
 import { OrderForm } from "."
 
 function CartPage() {
 
     const { state, dispatch } = useContext(Storecontext)
+
+
+
+
+    const finalPrice = () => {
+        let total = 0;
+        for (let i = 0; i < state.items.length; i++) {
+            total = total + state.items[i].priceValue
+        }
+        return total.toFixed(0)
+    }
+
+    let total = finalPrice()
+
 
     const removeFromCart = (item) => {
         dispatch({
@@ -15,17 +30,9 @@ function CartPage() {
         })
     }
 
-    const finalPrice = () => {
-        let total = 0;
-        for (let i = 0; i < state.items.length; i++) {
-            total = total + state.items[i].priceValue
-        }
-        return total.toFixed(2)
-    }
-
     const emptyCart = (
         <StyledEmptyCart>
-            <h2>Your Bag is empty</h2>
+            <h2>Your bag is empty</h2>
             <h1>:(</h1>
         </StyledEmptyCart>
     )
@@ -36,7 +43,7 @@ function CartPage() {
             <StyledCartAll>
                 <StyledCartBox>
                 {state.items.map(item => (
-                    <StyledCartItem key={item.id}>
+                    <StyledCartItem key={item.itemId}>
                         <img src={item.img} alt="pic" key={item.img} />
                         <StyledCartItemDesc>
                             <h4>{item.brand}</h4>
@@ -52,10 +59,10 @@ function CartPage() {
                 </StyledCartBox>
                 <StyledForm>
                     <StyledPrice>Final price: {`$${finalPrice()}`}</StyledPrice>
-                    <OrderForm />
+                    <OrderForm total={total} />
                 </StyledForm>
             </StyledCartAll>
-
+            <GoToTop />
         </>
     )
 
@@ -106,7 +113,7 @@ img {
 `
 
 const StyledTitle = styled.h3`
-padding: 4rem;
+padding: 2rem;
 `
 const StyledPrice = styled.h3`
 padding: 1rem;
