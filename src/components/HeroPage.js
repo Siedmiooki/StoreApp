@@ -27,6 +27,9 @@ position: relative;
 cursor: pointer;
 margin-bottom: 2rem;
 margin-top: 10rem;
+@media ( max-width: 1100px ) {
+
+    }
 `
 const StyledImg = styled.img`
     width: 100%;

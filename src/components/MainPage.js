@@ -46,6 +46,21 @@ function MainPage({ data }) {
     )
 }
 
+const StyledMain = styled.div`
+display: grid;
+justify-content: space-around;
+align-items: flex-start;
+max-width: 1258px;
+padding: 1rem;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+grid-column-gap: 3rem;
+grid-row-gap: 5rem;
+background: white;
+@media ( max-width: 1100px ) {
+        max-width: none;
+    }
+`
+
 const StyledAddTo = styled.div`
 position: absolute;
 display: flex;
@@ -81,16 +96,6 @@ position: relative;
     }
 `
 
-const StyledMain = styled.div`
-display: grid;
-justify-content: space-around;
-align-items: flex-start;
-max-width: 1258px;
-padding: 1rem;
-grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-grid-column-gap: 3rem;
-grid-row-gap: 5rem;
-background: white;
-`
+
 
 export default MainPage
