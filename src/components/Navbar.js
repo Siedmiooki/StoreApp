@@ -135,7 +135,7 @@ a {
     order: 1;
     padding: 0.5rem;
 a {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
 }
 }
 `
@@ -162,6 +162,8 @@ height: 30px;
 }
 @media ( max-width: 1100px ) {
     justify-content: center;
+    margin-right: 0;
+    width: 50%;
 svg {
 width: 20px;
 height: 20px;

@@ -56,8 +56,14 @@ grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 grid-column-gap: 3rem;
 grid-row-gap: 5rem;
 background: white;
-@media ( max-width: 1100px ) {
-        max-width: none;
+@media ( max-width: 1258px ) {
+    max-width: 1000px;
+    }
+@media ( max-width: 1000px ) {
+    max-width: 800px;
+    }
+@media ( max-width: 770px ) {
+    max-width: 450px;
     }
 `
 
@@ -90,12 +96,6 @@ position: relative;
         font-size: 1rem;
         text-align: left;
     }
-    @media ( max-width: 1300px ) {
-        padding: 0rem;
-        margin-bottom: 1rem
-    }
 `
-
-
 
 export default MainPage
