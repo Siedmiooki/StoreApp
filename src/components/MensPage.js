@@ -54,18 +54,7 @@ function MensPage() {
     )
 }
 
-const StyledAddTo = styled.div`
-position: absolute;
-display: flex;
-gap: 0.5rem;
-right: 1rem;
-bottom: 0rem;
-svg {
- :hover {
-  color: #f75e53;
-}
-}
-`
+
 
 const StyledMens = styled.div`
 height: 100vh;
@@ -74,23 +63,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 `
-const StyledItemCard = styled.div`
-display: flex;
-flex-direction: column;
-cursor: pointer;
-overflow: hidden;
-background: white;
-position: relative;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    p {
-        font-size: 1rem;
-        text-align: left;
-    }
-`
+
 
 const StyledCardContainer = styled.div`
 display: grid;
@@ -110,7 +83,56 @@ background: white;
     }
 @media ( max-width: 770px ) {
     max-width: 450px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 2rem;
     }
+`
+
+const StyledItemCard = styled.div`
+display: flex;
+flex-direction: column;
+cursor: pointer;
+overflow: hidden;
+background: white;
+position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    p {
+        font-size: 1rem;
+        text-align: left;
+    }
+@media ( max-width: 770px ) {
+    p {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
+    }
+    }
+`
+
+const StyledAddTo = styled.div`
+position: absolute;
+display: flex;
+gap: 0.5rem;
+right: 1rem;
+bottom: 0rem;
+svg {
+ :hover {
+  color: #f75e53;
+}
+}
+@media ( max-width: 770px ) {
+width: 30%;
+flex-direction: flex-start;
+svg {
+right: 0;
+width: 20px;
+height: 20px;
+}
+}
 `
 
 export default MensPage

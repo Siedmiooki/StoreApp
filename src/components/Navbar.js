@@ -62,9 +62,6 @@ const StyledNavbar = styled.div`
     margin-bottom: 2rem;
     justify-content: center;
     box-shadow: 0 2px 12px 0px lightgray;
-    @media ( max-width: 1100px ) {
-
-}
     a {
         color: black;
         text-decoration: none;
@@ -77,6 +74,7 @@ const StyledNavbar = styled.div`
     span {
         color: #f75e53;
     }
+    @media ( max-width: 1000px ) {}
 `
 
 const StyledNavBox = styled.div`
@@ -84,7 +82,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 1680px;
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
@@ -105,14 +103,14 @@ a {
     align-items: center;
     letter-spacing: 2px;
 }
-@media ( max-width: 1100px ) {
-    width: 50%;
+@media ( max-width: 1000px ) {
+    width: 60%;
     margin-left: 0;
     h1 {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
     p {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
 }
 `
@@ -130,7 +128,7 @@ a {
   color: #f75e53;
 }
 }
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
     width: 90%;
     order: 1;
     padding: 0.5rem;
@@ -160,20 +158,19 @@ height: 30px;
   color: #f75e53;
 }
 }
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
     justify-content: center;
     margin-right: 0;
-    width: 50%;
 svg {
 width: 20px;
 height: 20px;
 }
-p {
-padding: 0 1.5rem;
+a {
+padding: 0 0.5rem;
 cursor: pointer
 }
 div {
-padding: 0 1.5rem;
+padding: 0 0.5rem;
 cursor: pointer
 }
 }
@@ -196,10 +193,15 @@ div {
     background: #f75e53;
     border-radius: 50%;
 }
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
 div {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    top: 1rem;
+    left: 1.4rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.7rem;
 }
 }
 `
@@ -221,10 +223,15 @@ div {
     background: #f75e53;
     border-radius: 50%;
 }
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
 div {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    top: 1rem;
+    left: 1.4rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.7rem;
 }
 }
 `
@@ -246,17 +253,17 @@ div {
     background: #f75e53;
     border-radius: 50%;
 }
-@media ( max-width: 1100px ) {
+@media ( max-width: 1000px ) {
 div {
-    width: 1.2rem;
-    height: 1.2rem;
-    right: 0.85rem;
+    width: 1rem;
+    height: 1rem;
+    top: 1rem;
+    left: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.7rem;
 }
 }
 `
-
-
-
-
 
 export default Navbar

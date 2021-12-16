@@ -100,6 +100,17 @@ h1 {
     font-size: 5rem;
     transform: rotate(90deg)
 }
+@media ( max-width: 1000px ) {
+height: 90vh;
+width: 80%;
+h2 {
+    font-size: 2rem;
+}
+h1 {
+    font-size: 4rem;
+    transform: rotate(90deg)
+}
+    }
 `
 
 const StyledTrashBin = styled(TrashBin)`
