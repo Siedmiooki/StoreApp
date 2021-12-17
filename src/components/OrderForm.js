@@ -28,7 +28,7 @@ function OrderForm({ total }) {
     }
 
     return (
-        <div>
+        <>
             <StyledFormBox onSubmit={(e) => addOrder(e, formInfo)}>
                 <InputStyled type="text" placeholder="first name" onChange={(e) => setFormInfo({ ...formInfo, firstname: e.target.value })} />
                 <InputStyled type="text" placeholder="second name" onChange={(e) => setFormInfo({ ...formInfo, secondname: e.target.value })} />
@@ -39,7 +39,7 @@ function OrderForm({ total }) {
                 {/* <TextareaStyled rows="6" placeholder="additional info" onChange={(e) => setFormInfo({ ...formInfo, info: e.target.value })} /> */}
                 <ButtonStyled type="submit">Confirm Order</ButtonStyled>
             </StyledFormBox>
-        </div>
+        </>
     )
 }
 
@@ -47,14 +47,17 @@ function OrderForm({ total }) {
 const StyledFormBox = styled.form`
 display: flex;
 flex-direction: column;
-width: 60%;
+width: 100%;
 gap: 1rem;
 background: white;
-padding: 3rem 2rem;
-min-width: 25rem;
-max-width: 30rem;
-@media ( max-width: 1300px ) {
-    padding: 0rem;
+padding: 3rem 1rem;
+/* min-width: 25rem;
+max-width: 30rem; */
+@media ( max-width: 1000px ) {
+padding: 0rem;
+width: 70vw;
+min-width: auto;
+max-width: auto;
 }
 `
 
@@ -65,30 +68,8 @@ const ButtonStyled = styled.button`
 :hover{
     background: #b80c00;
 }
-`
-
-const TextareaStyled = styled.textarea`
-    padding: 1rem 1rem;
-    color: black;
-    background: white;
-    font-size: 1.2rem;
-    line-height: 150%;
-    border-width: 0;
-    border-bottom: 1px solid #b3b1b1;
-::placeholder {
-        font-size: 1.1rem;
-}
-:focus::-webkit-input-placeholder {
-    color: white;
-}
-::-webkit-scrollbar {
-    width: 0.5rem;
-}
-::-webkit-scrollbar-thumb {
-    background-color: darkgrey
-}
-::-webkit-scrollbar-track {
-    background-color: black
+@media ( max-width: 1000px ) {
+    width: 100%;
 }
 `
 
@@ -106,6 +87,34 @@ const InputStyled = styled.input`
 :focus::-webkit-input-placeholder {
     color: #2e2c2c;
 }
+@media ( max-width: 1000px ) {
+    text-align: center;
+}
 `
+
+// const TextareaStyled = styled.textarea`
+//     padding: 1rem 1rem;
+//     color: black;
+//     background: white;
+//     font-size: 1.2rem;
+//     line-height: 150%;
+//     border-width: 0;
+//     border-bottom: 1px solid #b3b1b1;
+// ::placeholder {
+//         font-size: 1.1rem;
+// }
+// :focus::-webkit-input-placeholder {
+//     color: white;
+// }
+// ::-webkit-scrollbar {
+//     width: 0.5rem;
+// }
+// ::-webkit-scrollbar-thumb {
+//     background-color: darkgrey
+// }
+// ::-webkit-scrollbar-track {
+//     background-color: black
+// }
+// `
 
 export default OrderForm

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
 import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
+import { StyledItemCard, StyledAddTo } from "./ComponentStyles"
 
 function MainPage({ data }) {
 
@@ -64,37 +65,9 @@ background: white;
     }
 @media ( max-width: 770px ) {
     max-width: 450px;
-    }
-`
-
-const StyledAddTo = styled.div`
-position: absolute;
-display: flex;
-gap: 0.5rem;
-right: 1rem;
-bottom: 0rem;
-svg {
- :hover {
-  color: #f75e53;
-}
-}
-`
-
-const StyledItemCard = styled.div`
-display: flex;
-flex-direction: column;
-cursor: pointer;
-overflow: hidden;
-background: white;
-position: relative;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    p {
-        font-size: 1rem;
-        text-align: left;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 2rem;
     }
 `
 

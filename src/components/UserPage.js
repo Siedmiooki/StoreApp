@@ -57,6 +57,6 @@ function UserPage() {
     )
 }
 
-const Styled
+
 
 export default UserPage

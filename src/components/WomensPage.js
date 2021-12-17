@@ -6,6 +6,7 @@ import { HeroPage, Spinner } from "."
 import { Link } from 'react-router-dom'
 import GoToTop from './GoToTop'
 import { BagAdd, Heart } from "@styled-icons/ionicons-outline"
+import { StyledCardContainer, StyledItemCard, StyledAddTo } from "./ComponentStyles"
 
 
 function WomensPage() {
@@ -49,25 +50,11 @@ function WomensPage() {
                         </StyledAddTo>
                     </StyledItemCard>
                 ))}
-
             </StyledCardContainer>
             <GoToTop />
         </StyledWomens>
     )
 }
-
-const StyledAddTo = styled.div`
-position: absolute;
-display: flex;
-gap: 0.5rem;
-right: 1rem;
-bottom: 0rem;
-svg {
- :hover {
-  color: #f75e53;
-}
-}
-`
 
 const StyledWomens = styled.div`
 height: 100vh;
@@ -75,44 +62,6 @@ width: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
-`
-const StyledItemCard = styled.div`
-display: flex;
-flex-direction: column;
-cursor: pointer;
-overflow: hidden;
-background: white;
-position: relative;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    p {
-        font-size: 1rem;
-        text-align: left;
-    }
-`
-
-const StyledCardContainer = styled.div`
-display: grid;
-justify-content: space-around;
-align-items: flex-start;
-max-width: 1258px;
-padding: 1rem;
-grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-grid-column-gap: 3rem;
-grid-row-gap: 5rem;
-background: white;
-@media ( max-width: 1258px ) {
-    max-width: 1000px;
-    }
-@media ( max-width: 1000px ) {
-    max-width: 800px;
-    }
-@media ( max-width: 770px ) {
-    max-width: 450px;
-    }
 `
 
 export default WomensPage
