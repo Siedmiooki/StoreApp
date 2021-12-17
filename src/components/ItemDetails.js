@@ -137,7 +137,6 @@ padding: 1rem 2.5rem;
 }
 `
 
-
 const StyledPicContainer = styled.div`
 width: 100%;
 height: 90%;
@@ -182,6 +181,7 @@ img {
 }
 }
 `
+
 const StyledDetailsContainer = styled.div`
 width: 100%;
 height: 100vh;
@@ -197,6 +197,5 @@ justify-content: center;
     flex-direction: column;
     }
 `
-
 
 export default ItemDetails
