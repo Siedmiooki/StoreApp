@@ -78,7 +78,7 @@ margin-top: 10vh;
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: flex-start;
+justify-content: center;
 `
 
 export const StyledAll = styled.div`
@@ -86,6 +86,7 @@ display: flex;
 align-items: flex-start;
 min-height: 90vh;
 width: 80%;
+max-width: 1258px;
 padding: 2rem;
 border-top: 1px solid #b3b1b1;
 border-bottom: 1px solid #b3b1b1;
