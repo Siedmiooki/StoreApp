@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import GoToTop from './GoToTop'
 import { Storecontext } from '../App'
 import { StyledContainer, StyledAll, StyledBox, StyledItem, StyledItemDesc, StyledForm, StyledEmpty, StyledTitle, StyledPrice } from "./ComponentStyles"
@@ -17,10 +16,9 @@ function UserPage() {
     const fullHistory = (
         <>
             <StyledTitle>My order history</StyledTitle>
-            <StyledAll>
                 {state.orders.map(order => (
-                    <StyledBox key={order.orderInfo.orderId}>
-                        {/* <StyledOrders> */}
+                    <StyledAll>
+                        <StyledBox key={order.orderInfo.orderId}>
                             <h5>Order ID: {order.orderInfo.orderId}</h5>
                         <StyledPrice>{`Order value: $${order.orderInfo.orderValue}`}</StyledPrice>
                         {order.orderItems.map(item => (
@@ -34,7 +32,7 @@ function UserPage() {
                                 </StyledItemDesc>
                             </StyledItem>
                         ))}
-                        {/* </StyledOrders> */}
+                        </StyledBox>
                         <StyledForm>
                             <h4>Billing Adress</h4>
                             <p>name: {order.orderInfo.firstname} {order.orderInfo.secondname}</p>
@@ -43,10 +41,10 @@ function UserPage() {
                             <p>street: {order.orderInfo.street} {order.orderInfo.houseno}</p>
                             {order.orderInfo.info ? <p>info: {order.orderInfo.info}</p> : null}
                         </StyledForm>
-                    </StyledBox>
+
+                    </StyledAll>
                 ))}
-                <GoToTop />
-            </StyledAll>
+            <GoToTop />
         </>
     )
 

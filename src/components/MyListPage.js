@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Storecontext } from '../App'
 import { Link } from 'react-router-dom'
-import { StyledContainer, StyledAll, StyledItem, StyledItemDesc, StyledTrashBin, StyledEmpty, StyledTitle, } from "./ComponentStyles"
+import { StyledContainer, StyledAll, StyledBox, StyledItem, StyledItemDesc, StyledTrashBin, StyledEmpty, StyledTitle, } from "./ComponentStyles"
 
 function MyListPage() {
 
@@ -25,6 +25,7 @@ function MyListPage() {
         <>
             <StyledTitle>My favorites</StyledTitle>
             <StyledAll>
+                <StyledBox>
                 {state.likes.map(item => (
                     <StyledItem key={item.itemId}>
                         <Link to={`/${item.itemId}`}>
@@ -41,6 +42,7 @@ function MyListPage() {
                         />
                     </StyledItem>
                 ))}
+                </StyledBox>
             </StyledAll>
         </>
     )
