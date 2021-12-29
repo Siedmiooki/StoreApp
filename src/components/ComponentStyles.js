@@ -84,7 +84,6 @@ justify-content: center;
 export const StyledAll = styled.div`
 display: flex;
 align-items: flex-start;
-min-height: 90vh;
 width: 80%;
 max-width: 1258px;
 padding: 2rem;
